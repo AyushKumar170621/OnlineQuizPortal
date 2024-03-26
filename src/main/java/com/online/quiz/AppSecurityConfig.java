@@ -36,6 +36,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -58,12 +59,16 @@ public class AppSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic();
+        		.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(registry -> {
+                	registry.requestMatchers("/home","/register/**").permitAll();
+                	registry.requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**").permitAll();
+                	registry.anyRequest().authenticated();
+                })
+                .formLogin(httpSecurityFormLoginConfigurer -> {
+                	httpSecurityFormLoginConfigurer.loginPage("/login").permitAll();
+                	
+                });
         return http.build();
     }
 }

@@ -32,9 +32,6 @@ public class Users {
 	@Column(nullable = false)
 	private String fullName;
 	
-	@Enumerated(EnumType.STRING)
-	private UserRole role;
-	
 	private Date lastLogin;
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL, fetch  = FetchType.LAZY)
