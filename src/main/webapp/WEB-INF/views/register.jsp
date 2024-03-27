@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="styles.css">
+    <style><%@include file="../../css/styles.css"%></style>
 </head>
 <body>
     <div class="container">
@@ -18,10 +18,14 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="input-group">
+             	<label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required><br>
+            </div>
             <button type="submit">Register</button>
         </form>
         <div class="login-link">
-            <a href="login.jsp">Login</a>
+            <a href="/login">Login</a>
         </div>
     </div>
 </body>

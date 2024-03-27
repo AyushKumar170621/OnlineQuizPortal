@@ -1,21 +1,27 @@
 package com.online.quiz.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 
 @Entity
 public class Users {
+	@Override
+	public String toString() {
+		return "Users [userID=" + userID + ", username=" + username + ", createdAt=" + createdAt + ", fullName="
+				+ fullName + ", lastLogin=" + lastLogin + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int userID;
@@ -32,6 +38,13 @@ public class Users {
 	@Column(nullable = false)
 	private String fullName;
 	
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	private Date lastLogin;
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL, fetch  = FetchType.LAZY)
@@ -72,5 +85,11 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@PrePersist
+	protected void onCreate()
+	{
+		this.createdAt= Date.valueOf(LocalDate.now());
 	}
 }

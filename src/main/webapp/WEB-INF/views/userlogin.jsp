@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <style><%@include file="../../css/styles.css"%></style>
 </head>
 <body>
     <div class="container">
@@ -21,7 +21,7 @@
             <button type="submit">Login</button>
         </form>
         <div class="register-link">
-            <a href="register.jsp">Register</a>
+            <a href="/register">Register</a>
         </div>
     </div>
 </body>
