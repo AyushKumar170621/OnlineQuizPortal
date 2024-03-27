@@ -8,22 +8,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.online.quiz.model.QuizTopic;
 import com.online.quiz.repository.QuizRepository;
 import com.online.quiz.repository.UserRepository;
+import com.online.quiz.service.QuizServices;
+
 
 @Controller
 public class Home {
 	
 	@Autowired
-	private QuizRepository Qrepo;
-	@GetMapping("/home")
-	public String home(@AuthenticationPrincipal UserDetails currentUser)
-	{
-		System.out.println(currentUser.getUsername());
-		return "home";
-	}
+	private QuizServices qService;
 	
 	@GetMapping("/login")
 	public String login()
@@ -31,14 +28,17 @@ public class Home {
 		return "userlogin";
 	}
 	
-	@GetMapping("/topic")
-	public String quizTopic()
+	@GetMapping("/home")
+	public ModelAndView quizTopic(@AuthenticationPrincipal UserDetails currentUser)
 	{
-		List<QuizTopic> list= Qrepo.findAll();
-		for(QuizTopic tmp : list)
-		{
-			System.out.print(tmp.getTopicName());
-		}
-		return "inside topics";
+		ModelAndView modelAndView = new ModelAndView();
+        List<QuizTopic> quizTopics = qService.getAllQuizTopics();
+        for(QuizTopic tp : quizTopics)
+        {
+        	System.out.println(tp.getTopicName());
+        }
+        modelAndView.addObject("quizTopics", quizTopics);
+        modelAndView.setViewName("home");
+        return modelAndView;
 	}
 }

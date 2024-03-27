@@ -73,6 +73,7 @@ public class AppSecurityConfig {
                 	.permitAll();
                 	
                 });
+                
         return http.build();
     }
 }

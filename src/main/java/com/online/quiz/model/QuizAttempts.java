@@ -1,6 +1,7 @@
 package com.online.quiz.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 
 @Entity
 public class QuizAttempts {
@@ -33,7 +35,7 @@ public class QuizAttempts {
 	
 	@Column(nullable=false)
 	private int submittedAt;
-
+	
 	public int getAttemptID() {
 		return attemptID;
 	}
@@ -41,8 +43,6 @@ public class QuizAttempts {
 	public void setAttemptID(int attemptID) {
 		this.attemptID = attemptID;
 	}
-
-	
 
 	public Users getUserID() {
 		return user;
@@ -83,4 +83,5 @@ public class QuizAttempts {
 	public void setSubmittedAt(int submittedAt) {
 		this.submittedAt = submittedAt;
 	}
+	
 }
