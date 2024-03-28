@@ -3,25 +3,8 @@
 <html>
 <head>
     <title>Quiz Score</title>
+    <style><%@include file="../../css/style.css"%></style>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-            text-align: center;
-        }
         .score-info {
             margin-bottom: 20px;
         }
@@ -43,6 +26,7 @@
     </style>
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
     <div class="container">
         <h2>Quiz Score</h2>
         <div class="score-info">
@@ -51,7 +35,7 @@
             <p>Correct Answers: <%= request.getAttribute("correctAnswers") %></p>
             <p>Incorrect or unattempted Answers: <%= request.getAttribute("incorrectAnswers") %></p>
         </div>
-        <a href="/results" class="back-btn">Back to Quiz</a>
+        <a href="/question/results" class="back-btn">go to all previous records</a>
     </div>
 </body>
 </html>

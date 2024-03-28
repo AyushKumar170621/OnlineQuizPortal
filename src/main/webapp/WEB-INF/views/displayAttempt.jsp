@@ -4,24 +4,8 @@
 <html>
 <head>
     <title>Quiz Attempts</title>
+    <style><%@include file="../../css/style.css"%></style>
     <style>
-        /* CSS styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -33,16 +17,27 @@
         }
         th {
             background-color: #f2f2f2;
+            text-align:left;
         }
         tr:hover {
             background-color: #f9f9f9;
         }
-    </style>
+        #timer {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+       </style>
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
     <div class="container">
         <h2>Quiz Attempts</h2>
-        <table>
+        <table class="attempt-table">
             <thead>
                 <tr>
                     <th>Quiz Name</th>
