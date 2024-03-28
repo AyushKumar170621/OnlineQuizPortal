@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,7 +30,7 @@ public class QuizAttemptsService {
         attempt.setUserID(userRepo.findByUsername(username));
         attempt.setQuizID(quizId);
         attempt.setScore(score);
-        attempt.setAttemptedAt(new Date(System.currentTimeMillis())); // Assuming attemptedAt is java.sql.Date
+        attempt.setAttemptedAt(LocalDateTime.now()); // Assuming attemptedAt is java.sql.Date
         // Submitting at is not demonstrated here, assuming typo in the QuizAttempts model (submittedAt as int)
 
         return quizAttemptsRepository.save(attempt);

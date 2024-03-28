@@ -4,6 +4,7 @@ import com.online.quiz.model.Question;
 import com.online.quiz.service.QuestionService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,10 @@ public class QuestionController {
         List<Question> mulquestions = questionService.getQuestionsByTopicAndType(quizTopicId, true);
         List<Question> mcqlquestions = questionService.getQuestionsByTopicAndType(quizTopicId, false);
         List<Question> questions = new ArrayList<>();
-        questions.addAll(mulquestions);
-        questions.addAll(mcqlquestions);
+        Collections.shuffle(mulquestions);
+        Collections.shuffle(mcqlquestions);
+        questions.addAll(mulquestions.subList(0,4));
+        questions.addAll(mcqlquestions.subList(0,6));
         modelAndView.addObject("questions", questions);
         modelAndView.addObject("userId",currentUser.getUsername());
         modelAndView.addObject("quizId",quizTopicId);

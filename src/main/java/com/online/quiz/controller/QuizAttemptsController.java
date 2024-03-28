@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class QuizAttemptsController {
-	private int total=25,correct=0;
+	private int total=10,correct=0;
     private final QuizAttemptsService quizAttemptsService;
     private final QuestionService questionService;
     private final QuizServices quizService;
@@ -67,8 +67,6 @@ public class QuizAttemptsController {
         model.addAttribute("name",username);
         model.addAttribute("correctAnswers",correct);
     	model.addAttribute("incorrectAnswers",total-correct);
-        // Now you have the quizId, username, and the list of question answers
-        // Process them as needed
         System.out.println(totalScore);
         quizAttemptsService.submitQuizAttempt(username, quizId, totalScore);
         return "result";
@@ -104,7 +102,7 @@ public class QuizAttemptsController {
     		}
         	
         }
-        return ans; // Placeholder
+        return ans; 
     }
     @GetMapping("question/results")
     public String showResults(Model model, @AuthenticationPrincipal UserDetails currentUser)
@@ -121,5 +119,4 @@ public class QuizAttemptsController {
     	return "displayAttempt";
     }
 
-    // Define DTO classes as needed for request bodies
 }

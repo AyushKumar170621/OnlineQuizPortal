@@ -1,7 +1,7 @@
 package com.online.quiz.model;
 
 import java.sql.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,10 +31,8 @@ public class QuizAttempts {
 	private int score;
 	
 	@Column(nullable=false)
-	private Date attemptedAt;
+	private LocalDateTime attemptedAt;
 	
-	@Column(nullable=false)
-	private int submittedAt;
 	
 	public int getAttemptID() {
 		return attemptID;
@@ -68,20 +66,13 @@ public class QuizAttempts {
 		this.score = score;
 	}
 
-	public Date getAttemptedAt() {
+	public LocalDateTime getAttemptedAt() {
 		return attemptedAt;
 	}
 
-	public void setAttemptedAt(Date attemptedAt) {
+	public void setAttemptedAt(LocalDateTime attemptedAt) {
 		this.attemptedAt = attemptedAt;
 	}
 
-	public int getSubmittedAt() {
-		return submittedAt;
-	}
-
-	public void setSubmittedAt(int submittedAt) {
-		this.submittedAt = submittedAt;
-	}
 	
 }

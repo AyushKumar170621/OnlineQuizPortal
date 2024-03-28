@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-image : linear-gradient(90deg ,#2F80ED, #56CCF2)
 }
 
 .container {
@@ -40,7 +40,7 @@ body {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #5D9C59;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -51,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #65B741;
 }
 
 .register-link,

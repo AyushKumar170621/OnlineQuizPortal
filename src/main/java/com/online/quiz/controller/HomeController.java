@@ -17,7 +17,7 @@ import com.online.quiz.service.QuizServices;
 
 
 @Controller
-public class Home {
+public class HomeController {
 	
 	@Autowired
 	private QuizServices qService;

@@ -19,17 +19,14 @@
             background-color: #f2f2f2;
             text-align:left;
         }
-        tr:hover {
+        tbody tr:nth-child(odd) {
+    		background-color: #74E291;
+		}
+		tbody tr:nth-child(even){
+		    background-color: #C5EBAA;
+		}
+        tbody tr:hover {
             background-color: #f9f9f9;
-        }
-        #timer {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
         }
        </style>
 </head>

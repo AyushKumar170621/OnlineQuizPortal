@@ -9,6 +9,9 @@
     <title>Quiz</title>
     <style><%@include file="../../css/style.css"%></style>
     <style>
+    	h2{
+    	color:#fff;
+    	}
     	form{
     		max-width:800px;
     	}
@@ -26,9 +29,14 @@
             padding: 10px;
             background-color: #007bff;
             color: #fff;
+            font-size:16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+        input[type="submit"]:hover
+        {
+        	background-color:#5D9C59;
         }
 	</style>
 </head>
