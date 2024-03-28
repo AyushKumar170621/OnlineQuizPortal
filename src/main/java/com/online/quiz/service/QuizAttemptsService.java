@@ -1,27 +1,32 @@
 package com.online.quiz.service;
 
 import com.online.quiz.model.QuizAttempts;
+import com.online.quiz.model.Users;
 import com.online.quiz.repository.QuizAttemptsRepository;
+import com.online.quiz.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class QuizAttemptsService {
 
     private final QuizAttemptsRepository quizAttemptsRepository;
-
+    private final UserRepository userRepo;
     @Autowired
-    public QuizAttemptsService(QuizAttemptsRepository quizAttemptsRepository) {
+    public QuizAttemptsService(QuizAttemptsRepository quizAttemptsRepository, UserRepository userRepo) {
         this.quizAttemptsRepository = quizAttemptsRepository;
+        this.userRepo = userRepo;
     }
 
-    public QuizAttempts submitQuizAttempt(int userId, int quizId, int score) {
+    public QuizAttempts submitQuizAttempt(String username, int quizId, int score) {
         QuizAttempts attempt = new QuizAttempts();
         // Set properties of attempt based on method parameters and other required details
         // Assuming Users is correctly set up and fetched here
-        // attempt.setUserID(user);
+        attempt.setUserID(userRepo.findByUsername(username));
         attempt.setQuizID(quizId);
         attempt.setScore(score);
         attempt.setAttemptedAt(new Date(System.currentTimeMillis())); // Assuming attemptedAt is java.sql.Date
@@ -29,6 +34,15 @@ public class QuizAttemptsService {
 
         return quizAttemptsRepository.save(attempt);
     }
+    
+    public List<QuizAttempts> getUserSubmissions(String username)
+    {
+    	Users uId = userRepo.findByUsername(username);
+    	List<QuizAttempts> res = quizAttemptsRepository.findByUser(uId);
+    	
+    	return res;
+    }
+
 
     // Other service methods as required
 }

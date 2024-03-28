@@ -17,6 +17,16 @@ public class QuestionAnswerDTO {
 	public void setSelectedOptions(List<String> selectedOptions) {
 		this.selectedOptions = selectedOptions;
 	}
+	public String getAns()
+	{
+		String ans=String.join(",", selectedOptions);
+		return ans;
+	}
+	@Override
+	public String toString() {
+		return "QuestionAnswerDTO [questionId=" + questionId + ", selectedOptions=" + selectedOptions + "]";
+	}
+	
 
     
 }
