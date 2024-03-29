@@ -28,7 +28,6 @@ public class RegistrationController {
 
 	    @PostMapping
 	    public String registerUser(Users user) {
-	    	System.out.println(user);
 	        userService.registerUser(user);
 	        return "redirect:/login"; 
 	    }

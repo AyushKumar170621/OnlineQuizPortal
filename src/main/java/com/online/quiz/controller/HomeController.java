@@ -7,13 +7,14 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.online.quiz.model.QuizTopic;
-import com.online.quiz.repository.QuizRepository;
+import com.online.quiz.model.Users;
 import com.online.quiz.repository.UserRepository;
 import com.online.quiz.service.QuizServices;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -21,6 +22,10 @@ public class HomeController {
 	
 	@Autowired
 	private QuizServices qService;
+	@Autowired
+	private UserRepository userRepo;
+	@Autowired 
+	private HttpSession httpSession;
 	
 	@GetMapping("/login")
 	public String login()
@@ -33,10 +38,8 @@ public class HomeController {
 	{
 		ModelAndView modelAndView = new ModelAndView();
         List<QuizTopic> quizTopics = qService.getAllQuizTopics();
-        for(QuizTopic tp : quizTopics)
-        {
-        	System.out.println(tp.getTopicName());
-        }
+        Users user = userRepo.findByUsername(currentUser.getUsername());
+        httpSession.setAttribute("fname", user.getFullName());
         modelAndView.addObject("quizTopics", quizTopics);
         modelAndView.setViewName("home");
         return modelAndView;

@@ -25,11 +25,26 @@
 <body>
 	<jsp:include page="navbar.jsp" />
     <div class="container">
-        <h2>Quiz Topics</h2>
+        <h2><i class="fa-solid fa-rectangle-list"></i> Quiz Topics</h2>
         <% 
         List<com.online.quiz.model.QuizTopic> quizTopics = (List<com.online.quiz.model.QuizTopic>) request.getAttribute("quizTopics");
         for (com.online.quiz.model.QuizTopic quizTopic : quizTopics) { %>
-            <div class="quiz-topic" onclick="redirectToQuiz('<%= quizTopic.getId() %>')">
+            <div class="quiz-topic" onclick="redirectToQuiz('<%= quizTopic.getId() %>')"> 
+            <%
+            	if(quizTopic.getTopicName().equals("Maps Quiz")){%> 
+            		<i class="fa-solid fa-map-location-dot"></i>
+            	<%}
+             %>
+             <%
+            	if(quizTopic.getTopicName().equals("Cricket Quiz")){%> 
+            		<i class="fa-solid fa-baseball-bat-ball"></i>
+            	<%}
+             %>
+             <%
+            	if(quizTopic.getTopicName().equals("Space Quiz")){%> 
+            		<i class="fa-solid fa-satellite"></i>
+            	<%}
+             %>
                 <%= quizTopic.getTopicName() %>
             </div>
         <% } %>

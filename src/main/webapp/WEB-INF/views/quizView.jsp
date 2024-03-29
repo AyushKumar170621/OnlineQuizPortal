@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style><%@include file="../../css/style.css"%></style>
     <style>
     	h2{
@@ -22,7 +23,7 @@
         input[type="radio"] {
             margin-right: 5px;
         }
-        input[type="submit"] {
+        button[type="submit"] {
             display: block;
             width: 100%;
             margin-top: 10px;
@@ -34,16 +35,16 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        input[type="submit"]:hover
+        button[type="submit"]:hover
         {
         	background-color:#5D9C59;
         }
 	</style>
 </head>
 <body>
-    <h2>Quiz Timer</h2>
+    <h2><i class="fa-solid fa-stopwatch"> Quiz Timer</i></h2>
     <div id="timer"></div>
-    <h2>Quiz</h2>
+    <h2><i class="fa-solid fa-clipboard-question"></i> Quiz</h2>
     <form id="quizForm" class="container" action="/question/submitQuiz" method="post">
         <%-- Assume questions is a List<Question> attribute --%>
         <% List<com.online.quiz.model.Question> questions = (List<com.online.quiz.model.Question>) request.getAttribute("questions");
@@ -69,12 +70,11 @@
         %>
         <input type="hidden" name="quizId" value="${quizId}">
         <input type="hidden" name="username" value="${userId }"> 
-        <input type="submit" value="Submit">
+        <button type="submit"><i class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
     </form>
    <script>
    document.addEventListener('DOMContentLoaded', function() {
-        // Set the countdown time to 30 minutes (in milliseconds)
-        const countdownTime = 30 * 60 * 1000; // 30 minutes * 60 seconds * 1000 milliseconds
+        const countdownTime = 3 * 6 * 1000; // 30 minutes * 60 seconds * 1000 milliseconds
 
         
 
@@ -84,7 +84,7 @@
             const seconds = Math.floor((remainingTime % 60000) / 1000); // Fixed
             console.log("Minutes:", minutes);
             console.log("Seconds:", seconds);
-            document.getElementById('timer').innerHTML = 'Time remaining: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+            document.getElementById('timer').innerHTML ='<i class="fa-solid fa-hourglass-start"></i>'+' ' +'Time remaining: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
         }
 
         // Function to handle the timer expiration

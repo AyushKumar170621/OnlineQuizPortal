@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Quiz Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
         body {
             margin: 0;
@@ -56,12 +57,12 @@
 <body>
 
 <div class="navbar">
-    <a class="active">Online Quiz Portal</a>
-    <a href="/home" >Home</a>
-    <a href="/question/results">Previous Attempts</a>
+    <a class="active"><i class="fa-solid fa-brain"></i> Online Quiz Portal</a>
+    <a href="/home" ><i class="fa-solid fa-house"></i> Home</a>
+    <a href="/question/results"><i class="fa-solid fa-list"></i> Previous Attempts</a>
     <div class="navbar-right">
-        <a >Hello </a>|
-        <a href="/logout">Logout</a>
+    	<a><i class="fa-solid fa-user-tie"></i> <%= session.getAttribute("fname") %></a>
+        <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </div>
 

@@ -30,7 +30,6 @@ public class QuestionController {
     @GetMapping("/{quizTopicId}")
     public ModelAndView showQuestions(@PathVariable Long quizTopicId, @AuthenticationPrincipal UserDetails currentUser) {
         ModelAndView modelAndView = new ModelAndView("questionsPage");
-        // Assuming you want both multi-choice and single-choice questions for the topic
         List<Question> mulquestions = questionService.getQuestionsByTopicAndType(quizTopicId, true);
         List<Question> mcqlquestions = questionService.getQuestionsByTopicAndType(quizTopicId, false);
         List<Question> questions = new ArrayList<>();

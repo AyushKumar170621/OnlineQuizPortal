@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style><%@include file="../../css/styles.css"%></style>
 </head>
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2><i class="fa-solid fa-user"></i> Login</h2>
         <form action="login" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
@@ -18,7 +19,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
         </form>
         <div class="register-link">
             <a href="/register">Register</a>

@@ -33,13 +33,14 @@
 <body>
 	<jsp:include page="navbar.jsp" />
     <div class="container">
-        <h2>Quiz Attempts</h2>
+        <h2><i class="fa-solid fa-file-lines"></i> Quiz Attempts</h2>
         <table class="attempt-table">
             <thead>
                 <tr>
-                    <th>Quiz Name</th>
-                    <th>Score</th>
-                    <th>Attempted At</th>
+                    <th><i class="fa-solid fa-brain"></i> Quiz Name</th>
+                    <th><i class="fa-solid fa-chart-line"></i> Score</th>
+                    <th><i class="fa-solid fa-calendar-days"></i> Submission Date</th>
+                    <th><i class="fa-solid fa-clock"></i> Submission Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +50,8 @@
                     <tr>
                         <td><%= mp.get(attempt.getQuizID()) %></td>
                         <td><%= attempt.getScore() %></td>
-                        <td><%= attempt.getAttemptedAt() %></td>
+                        <td><%= attempt.getAttemptedAt().toLocalDate() %> </td>
+                        <td><%= attempt.getAttemptedAt().toLocalTime() %></td>
                     </tr>
                 <% } %>
             </tbody>

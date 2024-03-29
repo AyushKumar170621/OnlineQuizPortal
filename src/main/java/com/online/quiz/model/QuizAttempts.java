@@ -67,7 +67,7 @@ public class QuizAttempts {
 	}
 
 	public LocalDateTime getAttemptedAt() {
-		return attemptedAt;
+		return attemptedAt.withNano(0);
 	}
 
 	public void setAttemptedAt(LocalDateTime attemptedAt) {

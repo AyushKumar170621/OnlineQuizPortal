@@ -39,7 +39,7 @@ public class QuizAttemptsController {
         this.quizService=quizService;
     }
     
-    @PostMapping("/question/submitQuiz")/*QuizAttempts*/
+    @PostMapping("/question/submitQuiz")
     public String submitQuiz(HttpServletRequest request,Model model) {
         // Extract form parameters
         int quizId = Integer.parseInt(request.getParameter("quizId"));
@@ -67,13 +67,13 @@ public class QuizAttemptsController {
         model.addAttribute("name",username);
         model.addAttribute("correctAnswers",correct);
     	model.addAttribute("incorrectAnswers",total-correct);
-        System.out.println(totalScore);
         quizAttemptsService.submitQuizAttempt(username, quizId, totalScore);
         return "result";
     }
 
     private int calculateScore(List<QuestionAnswerDTO> submission) {
     	int ans = 0;
+    	correct=0;
     	for(QuestionAnswerDTO qdto : submission)
         {
         	Question qs = questionService.getAnswers(qdto.getQuestionId());

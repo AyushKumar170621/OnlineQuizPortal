@@ -6,7 +6,8 @@
     <style><%@include file="../../css/style.css"%></style>
     <style>
         .score-info {
-            margin-bottom: 20px;
+             margin: auto;
+  			width: 50%;
         }
         .score-info p {
             margin: 5px 0;
@@ -22,20 +23,30 @@
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
+            max-width: -webkit-fill-available;
         }
+        scoreb{
+        element.style {
+    	margin: auto;
+    	width: 30%;
+    	text-align: center;
+		}
     </style>
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
     <div class="container">
-        <h2>Quiz Score</h2>
+        <h2><i class="fa-solid fa-square-poll-vertical"></i> Quiz Score</h2>
         <div class="score-info">
-            <p>Hey <%= request.getAttribute("name") %>,</p>
-            <p>Your Score: <%= request.getAttribute("score") %></p>
-            <p>Correct Answers: <%= request.getAttribute("correctAnswers") %></p>
-            <p>Incorrect or unattempted Answers: <%= request.getAttribute("incorrectAnswers") %></p>
+        	<div class="scoreb" >
+	            <p>Hey <%= session.getAttribute("fname") %>,</p>
+	            <p>Your Score: <%= request.getAttribute("score") %></p>
+	            <p>Correct Answers: <%= request.getAttribute("correctAnswers") %></p>
+	            <p>Wrong & unattempted: <%= request.getAttribute("incorrectAnswers") %></p>
+            </div>
+            <a href="/question/results" class="back-btn"><i class="fa-solid fa-circle-up"></i> Go to all previous records</a>
         </div>
-        <a href="/question/results" class="back-btn">go to all previous records</a>
+        
     </div>
 </body>
 </html>
