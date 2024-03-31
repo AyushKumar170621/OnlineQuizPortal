@@ -10,141 +10,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style><%@include file="../../css/style.css"%></style>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        padding: 20px;
-        line-height: 1.6;
-    }
-
-    h2 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    form {
-        max-width: 800px;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    p {
-        margin: 20px 0;
-        font-size: 18px;
-        color: #555;
-    }
-
-    input[type="checkbox"], input[type="radio"] {
-        margin-right: 10px;
-        transform: scale(1.2);
-    }
-
-    label {
-        margin-bottom: 12px;
-        display: block;
-        cursor: pointer;
-    }
-
-    button[type="submit"] {
-        display: block;
-        width: 100%;
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #007bff;
-        color: #fff;
-        font-size: 18px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-
-    /* Custom Checkboxes and Radios */
-    .custom-checkbox, .custom-radio {
-        position: relative;
-        padding-left: 28px;
-        cursor: pointer;
-        display: inline-block;
-        color: #444;
-        line-height: 18px;
-    }
-
-    .custom-checkbox input[type="checkbox"], .custom-radio input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 20px;
-        width: 20px;
-        background-color: #eee;
-        border-radius: 4px;
-    }
-
-    .custom-radio .checkmark {
-        border-radius: 50%;
-    }
-
-    .custom-checkbox input:checked ~ .checkmark, .custom-radio input:checked ~ .checkmark {
-        background-color: #007bff;
-    }
-
-    .custom-checkbox .checkmark:after, .custom-radio .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    .custom-checkbox input:checked ~ .checkmark:after {
-        display: block;
-    }
-
-    .custom-checkbox .checkmark:after {
-        left: 7px;
-        top: 3px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
-    }
-
-    .custom-radio .checkmark {
-        background-color: #fff;
-        border: 2px solid #ddd;
-    }
-
-    .custom-radio input:checked ~ .checkmark {
-        background-color: #fff;
-        border: 2px solid #007bff;
-    }
-
-    .custom-radio .checkmark:after {
-        top: 50%;
-        left: 50%;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #007bff;
-        transform: translate(-50%, -50%);
-        display: none;
-    }
-
-    .custom-radio input:checked ~ .checkmark:after {
-        display: block;
-    }
-</style>
-
+    	h2{
+    	color:#fff;
+    	}
+    	form{
+    		max-width:800px;
+    	}
+        p {
+            margin: 10px 0;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            font-size:16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover
+        {
+        	background-color:#5D9C59;
+        }
+	</style>
 </head>
 <body>
     <h2><i class="fa-solid fa-stopwatch"> Quiz Timer</i></h2>
