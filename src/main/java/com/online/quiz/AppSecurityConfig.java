@@ -65,6 +65,7 @@ public class AppSecurityConfig {
                 .authorizeHttpRequests(registry -> {
                 	registry.requestMatchers("/register/**").permitAll();
                 	registry.requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**").permitAll();
+                	registry.requestMatchers("/admin/**").hasRole("ADMIN");
                 	registry.anyRequest().authenticated();
                 })
                 .formLogin(httpSecurityFormLoginConfigurer -> {
@@ -72,7 +73,14 @@ public class AppSecurityConfig {
                 	.defaultSuccessUrl("/home",true)
                 	.permitAll();
                 	
-                });
+                })
+                .logout(logout -> 
+                logout.logoutUrl("/logout")
+                      .logoutSuccessUrl("/login?logout")
+                      .permitAll())
+                .exceptionHandling(exceptionHandling -> 
+                exceptionHandling.accessDeniedPage("/access-denied"));
+                
                 
         return http.build();
     }

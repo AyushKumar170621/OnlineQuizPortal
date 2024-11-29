@@ -8,4 +8,5 @@ import com.online.quiz.model.Question;
 
 public interface QuestionRepository extends JpaRepository<Question,Integer>{
 	List<Question> findByQuizTopicIdAndIsMultichoice(Long quizTopicId, boolean isMultichoice);
+	List<Question> findByQuizTopicId(Long quizTopicId);
 }

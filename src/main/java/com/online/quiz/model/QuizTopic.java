@@ -21,6 +21,11 @@ public class QuizTopic {
     @OneToMany(mappedBy = "quizTopic", cascade = CascadeType.ALL)
     private List<Question> questions;
 
+	@Override
+	public String toString() {
+		return "QuizTopic [id=" + id + ", topicName=" + topicName + "]";
+	}
+
 	public Long getId() {
 		return id;
 	}

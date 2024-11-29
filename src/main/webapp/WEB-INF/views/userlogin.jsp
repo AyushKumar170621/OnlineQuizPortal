@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,17 @@
 </head>
 <body>
     <div class="container">
+	<%if(request.getAttribute("errorMessage") != null)
+	{%>
+		<div id="errorMessage" class="error-message"><%= request.getAttribute("errorMessage") %> </div>
+	<%}
+	%>
+	<% if (request.getAttribute("successMessage") != null) { %>
+        <div class="success-message">
+            <%= request.getAttribute("successMessage") %>
+        </div>
+    <% } %>
+    
         <h2><i class="fa-solid fa-user"></i> Login</h2>
         <form action="login" method="post">
             <div class="input-group">

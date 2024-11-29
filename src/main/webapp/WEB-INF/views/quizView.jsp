@@ -24,7 +24,7 @@
 
     form {
         max-width: 800px;
-        background: #fff;
+        background: #ACFADF;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -179,7 +179,7 @@
     </form>
    <script>
    document.addEventListener('DOMContentLoaded', function() {
-        const countdownTime = 3 * 6 * 1000; // 30 minutes * 60 seconds * 1000 milliseconds
+        const countdownTime = 30 * 60 * 1000; // 30 minutes * 60 seconds * 1000 milliseconds
 
         
 

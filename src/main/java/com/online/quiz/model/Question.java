@@ -11,7 +11,14 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Question {
-    @Id
+    @Override
+	public String toString() {
+		return "Question [id=" + id + ", questionText=" + questionText + ", option1=" + option1 + ", option2=" + option2
+				+ ", option3=" + option3 + ", option4=" + option4 + ", correctAnswer=" + correctAnswer
+				+ ", isMultichoice=" + isMultichoice + ", quizTopic=" + quizTopic.toString() + "]";
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

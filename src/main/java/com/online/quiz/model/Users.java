@@ -2,6 +2,7 @@ package com.online.quiz.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -23,20 +24,28 @@ public class Users {
 	}
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int userID;
-	
-	@Column(unique=true, nullable = false)
-	private String username;
-	
-	@Column(nullable = false)
-	private String password;
-	
-	@Column(nullable = false)
-	private Date createdAt;
-	
-	@Column(nullable = false)
-	private String fullName;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int userID;
+    
+    @Column(unique=true, nullable = false)
+    private String username;
+    
+    @Column(nullable = false)
+    private String password;
+    
+    @Column(nullable = false)
+    private Date createdAt;
+
+    @Column(nullable = false)
+    private String fullName;
+    
+    private Date lastLogin;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<UserRole> userRoles;
+    
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<QuizAttempts> quizAttempts;
 	
 	public String getFullName() {
 		return fullName;
@@ -44,12 +53,12 @@ public class Users {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-
-	private Date lastLogin;
-	
-	@OneToMany(mappedBy="user",cascade = CascadeType.ALL, fetch  = FetchType.LAZY)
-	private List<QuizAttempts> quizAttempts;
-	
+	public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
 	public String getUsername() {
 		return username;
 	}

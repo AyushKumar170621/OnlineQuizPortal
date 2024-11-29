@@ -16,6 +16,7 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
+            background-color:#9ddcd6ba;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }

@@ -22,9 +22,28 @@ public class QuestionService {
         return questionRepository.findByQuizTopicIdAndIsMultichoice(quizTopicId, isMultichoice);
     }
     
+    public List<Question> getQuestionsByTopicId(Long quizTopicId)
+    {
+    	return questionRepository.findByQuizTopicId(quizTopicId);
+    }
     public Question getAnswers(Integer questionId)
     {
     	Optional<Question>  quesRes = questionRepository.findById(questionId);
     	return quesRes.orElse(null);
     }
+
+	public void saveQuestion(Question question) {
+		// TODO Auto-generated method stub
+		questionRepository.save(question);
+		
+	}
+
+	public Question findQuestionById(int id) {
+		return questionRepository.findById(id).get();
+	}
+
+	public void deleteQuestionById(int id) {
+		questionRepository.deleteById(id);
+		
+	}
 }

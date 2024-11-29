@@ -109,11 +109,11 @@ public class QuizAttemptsController {
     {
     	List<QuizAttempts> lst = quizAttemptsService.getUserSubmissions(currentUser.getUsername());
     	Map<Integer,String> mp = new HashMap<>();
-    	for(QuizAttempts qat : lst)
-    	{
-    		int id =qat.getQuizID();
-    		mp.put( id , quizService.getQuiz(id).getTopicName());
-    	}
+//    	for(QuizAttempts qat : lst)
+//    	{
+//    		int id =qat.getQuizTopic().getQuestions();
+//    		mp.put( id , quizService.getQuiz(id).getTopicName());
+//    	}
     	model.addAttribute("quizAttempts",lst);
     	model.addAttribute("nameMap",mp);
     	return "displayAttempt";

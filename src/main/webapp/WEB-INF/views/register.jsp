@@ -9,6 +9,16 @@
 </head>
 <body>
     <div class="container">
+    	<% if (request.getAttribute("successMessage") != null) { %>
+        <div class="success-message">
+            <%= request.getAttribute("successMessage") %>
+        </div>
+    <% } %>
+    <% if (request.getAttribute("errorMessage") != null) { %>
+        <div class="error-message">
+            <%= request.getAttribute("errorMessage") %>
+        </div>
+    <% } %>
         <h2><i class="fa-solid fa-users"></i> Register</h2>
         <form action="register" method="post">
             <div class="input-group">

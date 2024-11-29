@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="org.springframework.security.core.GrantedAuthority" %>
+<%@ page import="java.util.Collection" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +16,14 @@
             font-family: Arial, sans-serif;
         }
 
-        .navbar {
+       .navbar {
             overflow: hidden;
             background-color: #333;
+            position: fixed;
+            top: 0;
+            height:50px;
+            width: 100%;
+            z-index: 1;
         }
 
         .navbar a {
@@ -35,9 +43,11 @@
         .active {
             background-color: #04AA6D;
         }
-		.active-link{
-			color:#D63484;
-		}
+
+        .active-link {
+            color: #D63484;
+        }
+
         .navbar-right {
             float: right;
         }
@@ -52,6 +62,7 @@
                 float: none;
             }
         }
+
     </style>
 </head>
 <body>
@@ -60,6 +71,25 @@
     <a class="active"><i class="fa-solid fa-brain"></i> Online Quiz Portal</a>
     <a href="/home" ><i class="fa-solid fa-house"></i> Home</a>
     <a href="/question/results"><i class="fa-solid fa-list"></i> Previous Attempts</a>
+    <% 
+	    Collection<? extends GrantedAuthority> authorities = (Collection<? extends GrantedAuthority>) session.getAttribute("roles");
+	    boolean hasAdminRole = false;
+	
+	    if (authorities != null) {
+	        for (GrantedAuthority authority : authorities) {
+	            if ("ROLE_ADMIN".equals(authority.getAuthority())) {
+	                hasAdminRole = true;
+	                break;
+	            }
+	        }
+	    }
+
+	    if (hasAdminRole) { 
+	%>
+	        <a href="/admin/quiz">Admin Quiz</a>
+	<% 
+	    } 
+	%>
     <div class="navbar-right">
     	<a><i class="fa-solid fa-user-tie"></i> <%= session.getAttribute("fname") %></a>
         <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>

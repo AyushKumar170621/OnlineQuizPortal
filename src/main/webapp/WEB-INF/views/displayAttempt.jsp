@@ -48,7 +48,7 @@
                 Map<Integer,String > mp = (Map<Integer,String>) request.getAttribute("nameMap");
                 for (com.online.quiz.model.QuizAttempts attempt : (List<com.online.quiz.model.QuizAttempts>)request.getAttribute("quizAttempts")) { %>
                     <tr>
-                        <td><%= mp.get(attempt.getQuizID()) %></td>
+                        <td><%= attempt.getQuizTopic().getTopicName() %></td>
                         <td><%= attempt.getScore() %></td>
                         <td><%= attempt.getAttemptedAt().toLocalDate() %> </td>
                         <td><%= attempt.getAttemptedAt().toLocalTime() %></td>

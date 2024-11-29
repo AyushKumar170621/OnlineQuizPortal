@@ -31,11 +31,14 @@
     	width: 30%;
     	text-align: center;
 		}
+		.newbg{
+			background-color:#E4F1FF;
+		}
     </style>
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-    <div class="container">
+    <div class="container newbg">
         <h2><i class="fa-solid fa-square-poll-vertical"></i> Quiz Score</h2>
         <div class="score-info">
         	<div class="scoreb" >

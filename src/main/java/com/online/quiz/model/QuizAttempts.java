@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 
 @Entity
@@ -24,12 +25,30 @@ public class QuizAttempts {
 	@JoinColumn(name = "userID",nullable=false)
 	private Users user;
 	
-	@Column(nullable=false)
-	private int quizID;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "quizID",nullable =false)
+	private QuizTopic quizTopic;
+	
 	
 	@Column(nullable=false)
 	private int score;
 	
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
+	public QuizTopic getQuizTopic() {
+		return quizTopic;
+	}
+
+	public void setQuizTopic(QuizTopic quizTopic) {
+		this.quizTopic = quizTopic;
+	}
+
 	@Column(nullable=false)
 	private LocalDateTime attemptedAt;
 	
@@ -40,22 +59,6 @@ public class QuizAttempts {
 
 	public void setAttemptID(int attemptID) {
 		this.attemptID = attemptID;
-	}
-
-	public Users getUserID() {
-		return user;
-	}
-
-	public void setUserID(Users user) {
-		this.user = user;
-	}
-
-	public int getQuizID() {
-		return quizID;
-	}
-
-	public void setQuizID(int quizID) {
-		this.quizID = quizID;
 	}
 
 	public int getScore() {
